@@ -58,6 +58,29 @@
       };
     }
 
+
+    const slidingImages = document.querySelectorAll('.slide-in')
+
+    function checkSlide(e){
+      // console.log(e)
+      slidingImages.forEach(slide => {
+         const slideInAt = (window.scrollY + window.innerHeight) - slide.height/2
+
+         const imgBottom =  slide.offsetTop + slide.height
+         const isHalfShown = slideInAt > slide.offsetTop 
+         const isNotScrolledPast =  window.scrollY < imgBottom
+
+         if(isHalfShown && isNotScrolledPast){
+           slide.classList.add('active')
+
+         }
+         else{
+           slide.classList.remove('active')
+         }
+      })
+    }
+
+    window.addEventListener('scroll',debounce(checkSlide))
   </script>
 
   <style>

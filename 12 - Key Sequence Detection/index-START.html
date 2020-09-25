@@ -3,10 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
-  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js">
+    
+  </script>
+
 </head>
 <body>
 <script>
+
+  const pressedArray = []
+  const secret = 'esoesaparte'
+
+  window.addEventListener('keyup', (e)=>{
+      console.log(e.key)
+      pressedArray.push(e.key)
+      pressedArray.splice(-secret.length - 1,pressedArray.length - secret.length)
+
+      if(pressedArray.join('').includes(secret)){
+        console.log('yaas')
+      }
+
+      console.log(pressedArray)
+    })
 </script>
 </body>
 </html>
